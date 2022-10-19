@@ -1,0 +1,11 @@
+  <main class="todo-card container">
+    <div class="bg-light p-5 rounded">
+      <h1>{{todo.title}}</h1>
+      <p class="lead">{{todo.description}}</p>
+      <div class="d-grid gap-2 d-sm-flex">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3" (click)="onComplete()">Complete</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4" (click)="onArchive()">Archive</button>
+      </div>
+     
+    </div>
+  </main>

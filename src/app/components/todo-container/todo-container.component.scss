@@ -1,0 +1,24 @@
+
+.app-todo-component{
+    display:flex;
+
+    .list-container{
+
+        width:25%;
+        height: calc(100vh - 84px);
+    }
+
+    .todo-container{
+        width:75%;
+        .new-todo-btn{
+            float: right;
+            margin-top:-100px;
+            padding:12px;
+        }
+        .new-todo-formly-btn{
+            position:absolute;
+            bottom:30px;
+            right:100px;
+        }
+   }
+}

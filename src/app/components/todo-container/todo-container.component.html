@@ -1,0 +1,15 @@
+<div class="app-todo-component container">
+    <div class="list-container">
+        <app-todo-list [todos]="todos"></app-todo-list>
+    </div>
+    <div class="todo-container">
+
+        <app-todo [todo]="todo"></app-todo>
+
+
+        <div class="new-todo-btn fs-2 mb-5" (click)="openDialog()">
+            <i class="bi bi-plus-circle-fill" style="font-size: 80px;color: #0D6EFD;"></i>
+        </div>
+        
+    </div>
+</div>

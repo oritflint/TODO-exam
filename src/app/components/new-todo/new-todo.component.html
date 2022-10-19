@@ -1,0 +1,24 @@
+
+
+  
+
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Close click')"></button>
+	</div>
+	<div class="modal-body">
+
+    <form [formGroup]="form" (ngSubmit)="onNewTodoSubmit()">
+      <formly-form [form]="form" [fields]="fields" [options]="options" [model]="model" ></formly-form>
+  
+     
+      <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-lg btn-primary w-100 mx-0 mb-2" (click)="onNewTodoSubmit()">Save</button>
+		<button type="button" class="btn btn-lg btn-light w-100 mx-0" data-bs-dismiss="modal" (click)="activeModal.dismiss('Cross click')">cancel</button>  
+	</div> 
+  </form>
+
+
+	</div>
+
