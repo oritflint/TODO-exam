@@ -15,7 +15,6 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
-import {FormlyDatepickerModule} from '@ngx-formly/primeng/datepicker';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,6 @@ import {FormlyDatepickerModule} from '@ngx-formly/primeng/datepicker';
     NgbAlertModule,
     FormsModule, 
     ReactiveFormsModule,
-    FormlyDatepickerModule, 
     FormlyModule.forRoot({
       validationMessages: [{ name: 'required', message: 'This field is required' }],
     }),

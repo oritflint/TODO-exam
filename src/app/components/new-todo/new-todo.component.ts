@@ -12,7 +12,7 @@ import { TodoService } from 'src/app/services/todo.service';
   templateUrl: './new-todo.component.html',
   styleUrls: ['./new-todo.component.sass']
 })
-export class NewTodoComponent implements OnInit {
+export class NewTodoComponent {
 
   constructor(public activeModal: NgbActiveModal, public todoService: TodoService) { }
 
@@ -39,27 +39,12 @@ export class NewTodoComponent implements OnInit {
       }
     },
     {
-      key: 'Datepicker',
-      type: 'datepicker',
+      key: 'endDate',
+      type: 'input',
       props: {
-        label: 'Datepicker',
-        placeholder: 'Placeholder',
-        description: 'Description',
-        dateFormat: 'dd/mm/yy',
-        hourFormat: '24',
-        numberOfMonths: 1,
-        selectionMode: 'single',
+        type: 'date',
+        label: 'Day of the trip',
         required: true,
-        readonlyInput: false,
-        showTime: false,
-        showButtonBar: true,
-        showIcon: true,
-        showOtherMonths: true,
-        selectOtherMonths: false,
-        monthNavigator: false,
-        yearNavigator: false,
-        yearRange: '2020:2030',
-        inline: false,
       },
     },
     {
@@ -80,7 +65,7 @@ export class NewTodoComponent implements OnInit {
 
   public onNewTodoSubmit(): void {
 
-    // debugger
+    //debugger
     if (this.form.valid){
 
         const srcForm = this.form.value
@@ -90,18 +75,16 @@ export class NewTodoComponent implements OnInit {
           description:  srcForm['description'],
           isCompleted:false,
           isArchived:false,
-          endDate: srcForm['date'],//srcForm.date,
+          endDate: srcForm['endDate'],//srcForm.date,
           isSelected: true
         };
-
-        //this.todoService.addNewTodo(newTodo)
+        this.activeModal.close()
+        this.todoService.addNewTodo(newTodo)
         // this.dialog.closeAll();
         console.log("onsubmit:")
         console.log(this.form)
       }
     }
 
-  ngOnInit(): void {
-  }
 }
 

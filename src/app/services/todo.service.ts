@@ -179,14 +179,13 @@ export class TodoService {
 
   public updateTodo(todoId: string, action: string): void {
     const curList: Itodo[] = this._todosSubject.value;
-    const todoIndex :number = curList.findIndex((singleTodo)=> singleTodo.id = todoId)
+    const todo :Itodo = curList.find((singleTodo)=> singleTodo.id = todoId)
 
-    curList[todoIndex][action] = true
+    todo[action] = !todo[action]
 
     const JSONtodoList: string = JSON.stringify(curList)
     this._todosSubject.next(curList)
-
-    this.apiService.UpdateItem(todoId, curList[todoIndex])
+    this.apiService.UpdateItem(todoId, todo)
     //localStorage.setItem("todoList", JSONtodoList)
   }
   
@@ -197,7 +196,7 @@ export class TodoService {
     curList.filter((singleTodo)=> singleTodo.id != todoId)
     this._todosSubject.next(curList)
     this._singleTodoSubject.next(curList[todoIndex])
-    debugger
+    //debugger
     this.apiService.DeleteItem(todoId)
     //localStorage.setItem("todoList", JSONtodoList)
   }

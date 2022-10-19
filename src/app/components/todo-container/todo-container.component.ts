@@ -47,7 +47,6 @@ export class TodoContainerComponent implements OnInit, OnDestroy {
     this.modalService.open(NewTodoComponent, { ariaLabelledBy: 'modal-basic-title' })
     .result.then(
 			(result) => {
-        debugger
 				this.closeResult = `Closed with: ${result}`;
 			},
 			(reason) => {
@@ -56,15 +55,6 @@ export class TodoContainerComponent implements OnInit, OnDestroy {
 		);
 
 
-    // const dialogRef = this.dialog.open(NewTodoComponent, {
-    //   width: '250px',
-    //   // data: {name: this.name, animal: this.animal},
-    //   data: {},
-    // });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`); // Pizza!
-    // });
   }
 
   private getDismissReason(reason: any): string {
