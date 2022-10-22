@@ -26,7 +26,7 @@ export class NewTodoComponent {
       type: 'input',
       props: {
         label: 'What`s your task?',
-        required: true,   
+        required: true, 
       }
     },
 
@@ -46,6 +46,7 @@ export class NewTodoComponent {
         label: 'Day of the trip',
         required: true,
       },
+      defaultValue: Date.now(),
     },
     {
       key: 'PRIORITY',
@@ -76,7 +77,8 @@ export class NewTodoComponent {
           isCompleted:false,
           isArchived:false,
           endDate: srcForm['endDate'],//srcForm.date,
-          isSelected: true
+          priority: srcForm['priority'],
+          isSelected: false
         };
         this.activeModal.close()
         this.todoService.addNewTodo(newTodo)
