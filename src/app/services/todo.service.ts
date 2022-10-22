@@ -179,7 +179,6 @@ export class TodoService {
     const curList: Itodo[] = this._todosSubject.value;
     const todo :Itodo = curList.find((singleTodo)=> singleTodo.id == todoId)
     
-    debugger
     //todo[action] = !todo[action]
     todo.isSelected=false
 
@@ -201,7 +200,7 @@ export class TodoService {
     curList.filter((singleTodo)=> singleTodo.id != todoId)
     this._todosSubject.next(curList)
     this._singleTodoSubject.next(curList[todoIndex])
-    //debugger
+    
     this.apiService.DeleteItem(todoId)
     .subscribe(response => {
       console.log(response)

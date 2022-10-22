@@ -66,7 +66,6 @@ export class NewTodoComponent {
 
   public onNewTodoSubmit(): void {
 
-    //debugger
     if (this.form.valid){
 
         const srcForm = this.form.value
