@@ -25,16 +25,16 @@ export class ApiService {
   }
 
   public UpdateItem(todoId:string, todo:Itodo): Observable<string>{
-    let url:string = 'https://localhost:44343/api/todos'
-     return this.http.put(url, {todoId, todo}) as Observable<string>
+    let url:string = 'https://localhost:44343/api/todos/'+todoId
+     return this.http.put(url, todo) as Observable<string>
      
   }
   
-  public DeleteItem(todoId:string): void {
+  public DeleteItem(todoId:string): Observable<any> {
     let status:string =''
     let url:string = 'https://localhost:44343/api/todos/'+todoId;
 
-    this.http.delete(url,{})
+    return this.http.delete(url,{})
      
   }
 

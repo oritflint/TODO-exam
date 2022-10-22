@@ -175,18 +175,23 @@ export class TodoService {
     //localStorage.setItem("todoList", JSONtodoList)
   }
 
-
-
   public updateTodo(todoId: string, action: string): void {
     const curList: Itodo[] = this._todosSubject.value;
-    const todo :Itodo = curList.find((singleTodo)=> singleTodo.id = todoId)
-
-    todo[action] = !todo[action]
+    const todo :Itodo = curList.find((singleTodo)=> singleTodo.id == todoId)
+    
+    debugger
+    //todo[action] = !todo[action]
+    todo.isSelected=false
 
     const JSONtodoList: string = JSON.stringify(curList)
-    this._todosSubject.next(curList)
+
     this.apiService.UpdateItem(todoId, todo)
-    //localStorage.setItem("todoList", JSONtodoList)
+      .subscribe(response => {
+        todo.isSelected=true
+        console.log(response)
+      })
+    
+      //localStorage.setItem("todoList", JSONtodoList)
   }
   
 
@@ -198,6 +203,10 @@ export class TodoService {
     this._singleTodoSubject.next(curList[todoIndex])
     //debugger
     this.apiService.DeleteItem(todoId)
+    .subscribe(response => {
+      console.log(response)
+    })
+    
     //localStorage.setItem("todoList", JSONtodoList)
   }
 
