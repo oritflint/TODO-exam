@@ -127,12 +127,6 @@ export class TodoService {
           if(curList.length>i)
             curList[i].isSelected=true
 
-          for (let j=i+1; j<curList.length; j++) {
-            if(curList[j].isSelected){
-              curList[j].isSelected=false
-              break
-            }
-          }
 
           this._singleTodoSubject.next(curList[i])
           this._todosSubject.next(curList);
@@ -144,18 +138,15 @@ export class TodoService {
     return this._todosSubject.asObservable();
   }
 
-
   //GET CURRENT ITEM
   public getSingleTodo(): Observable<Itodo> {
     return this._singleTodoSubject.asObservable();
   }
 
-
   //SET CURRENT ITEM
   public setSingleTodo(todo: Itodo): void{
     this._singleTodoSubject.next(todo);
   }
-
 
   //ADD ITEM
   public addNewTodo(newTodo: Itodo): void{
@@ -175,7 +166,8 @@ export class TodoService {
     //localStorage.setItem("todoList", JSONtodoList)
   }
 
-  public updateTodo(todoId: string, action: string): void {
+  //UPDATE ITEM
+  public updateTodo(todoId: string): void {
     const curList: Itodo[] = this._todosSubject.value;
     const todo :Itodo = curList.find((singleTodo)=> singleTodo.id == todoId)
     
@@ -193,7 +185,7 @@ export class TodoService {
       //localStorage.setItem("todoList", JSONtodoList)
   }
   
-
+  //DELETE ITEM
   public deleteTodo(todoId: string): void {
     const curList: Itodo[] = this._todosSubject.value;
     const todoIndex :number = curList.findIndex((singleTodo)=> singleTodo.id == todoId)
@@ -204,13 +196,15 @@ export class TodoService {
     
     this.apiService.DeleteItem(todoId)
     .subscribe(response => {
+      const todo :Itodo = this._singleTodoSubject.value
+      todo.isSelected=true
       console.log(response)
     })
     
     //localStorage.setItem("todoList", JSONtodoList)
   }
 
-  public initSelected(){
+  public sort(){
 
   }
 }
