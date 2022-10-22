@@ -7,5 +7,5 @@ export interface Itodo{
     isArchived: boolean;
     endDate: Date;
     priority: number;
-    isSelected: boolean;
+    isSelected?: boolean;
 }

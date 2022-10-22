@@ -1,12 +1,21 @@
   <main class="todo-card container">
     <div class="bg-light p-5 rounded">
+      <i type="button" class="bi bi-trash3" style="font-size: 25px" (click)="onDelete()"></i>
       <h1 >{{todo.title}}</h1>
+      <div class="todo-end-date">{{todo.endDate.toString().substring(0,10)}}</div>
       <p class="lead">{{todo.description}}</p>
       <p class="lead"><b>PRIORITY: </b>{{todo.priority}}</p>
-      <div class="d-grid gap-2 d-sm-flex">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3" (click)="onComplete()">Complete</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4" (click)="onArchive()">Archive</button>
+      <div class="todo-buttons d-grid gap-2 d-sm-flex">
+
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3" 
+        (click)="onAction('isCompleted')" *ngIf="!todo.isCompleted">Complete</button>
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3" 
+        (click)="onAction('isCompleted')" *ngIf="todo.isCompleted">inComplete</button>
+
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4" 
+        (click)="onAction('isArchived')">Archive</button>
       </div>
+      
      
     </div>
   </main>

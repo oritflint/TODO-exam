@@ -26,4 +26,10 @@ export class TodoListComponent implements OnInit {
     todo.isSelected=true;
     this.todoService.setSingleTodo(todo)
   }
+
+  
+  sortby(sortField: string){
+    let sortedRolls = this.todos.sort((r1, r2) => (r1[sortField] > r2[sortField]) ? 1 : (r1[sortField] < r2[sortField]) ? -1 : 0);
+    this.todos = sortedRolls
+  }
 }

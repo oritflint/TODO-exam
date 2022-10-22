@@ -1,10 +1,13 @@
 <div class="todo-list">
+  <div class="sort-sec">SORT BY: <button type="button" (click)="sortby('date')"> Date</button>  <button type="button" (click)="sortby('title')">Title </button> <button type="button" (click)="sortby('isCompleted')">Done/Yet</button></div>
     <div class="item-wrap" *ngFor="let item of todos">
-        <div class="d-flex text-muted pt-3" [ngClass]="{selected : item.isSelected, completed : item.isCompleted}">
+        
+        <div class="todo-card d-flex text-muted pt-3 border-bottom" *ngIf="!item.isArchived" 
+        [ngClass]="{selected : item.isSelected, completed : item.isCompleted}" (click)="onItemClick(item)">
             <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
       
-            <p class="pb-3 mb-0 small lh-sm border-bottom" (click)="onItemClick(item)"
-            *ngIf="!item.isArchived">
+            <p class="pb-3 mb-0 small lh-sm"
+            >
               <strong class="d-block text-gray-dark">{{item.title}}</strong>
               {{item.description}}
             </p>

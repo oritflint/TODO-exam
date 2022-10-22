@@ -46,7 +46,6 @@ export class NewTodoComponent {
         label: 'Day of the trip',
         required: true,
       },
-      defaultValue: Date.now(),
     },
     {
       key: 'PRIORITY',
@@ -76,8 +75,7 @@ export class NewTodoComponent {
           isCompleted:false,
           isArchived:false,
           endDate: srcForm['endDate'],//srcForm.date,
-          priority: srcForm['priority'],
-          isSelected: false
+          priority: srcForm['priority']
         };
         this.activeModal.close()
         this.todoService.addNewTodo(newTodo)
