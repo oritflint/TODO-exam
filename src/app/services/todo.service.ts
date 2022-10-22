@@ -196,10 +196,11 @@ export class TodoService {
 
   public deleteTodo(todoId: string): void {
     const curList: Itodo[] = this._todosSubject.value;
-    const todoIndex :number = curList.findIndex((singleTodo)=> singleTodo.id = todoId)
-    curList.filter((singleTodo)=> singleTodo.id != todoId)
-    this._todosSubject.next(curList)
-    this._singleTodoSubject.next(curList[todoIndex])
+    const todoIndex :number = curList.findIndex((singleTodo)=> singleTodo.id == todoId)
+    const newList: Itodo[] = curList.filter((singleTodo)=> singleTodo.id != todoId)
+
+    newList? this._todosSubject.next(newList) : this._todosSubject.next(null)
+    todoIndex>0? this._singleTodoSubject.next(newList[todoIndex-1]) : this._singleTodoSubject.next(null)
     
     this.apiService.DeleteItem(todoId)
     .subscribe(response => {
