@@ -18,7 +18,6 @@ export class TodoComponent implements OnInit {
   }
 
   onComplete(){
-    debugger
     this.todo.isCompleted=!this.todo.isCompleted;
     this.todoService.updateTodo(this.todo.id, 'isCompleted')
   }
